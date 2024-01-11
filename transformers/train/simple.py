@@ -2,18 +2,20 @@ import pdb
 import torch
 import torch.nn.functional as F
 
+from tqdm import tqdm
+
 from transformers.data.utils import CharDataLoader
 from transformers.model.decoder import TransformerDecoder
 
 batch_size = 32
-seq_len = 20
+seq_len = 40
 embedding_size = 128
-n_blocks = 1
-n_heads = 4
+n_blocks = 5
+n_heads = 10
 dropout_p = 0.1
 lr = 3e-4
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-n_batches = 1000
+n_batches = 10000
 
 print(f'Using device: {device}')
 

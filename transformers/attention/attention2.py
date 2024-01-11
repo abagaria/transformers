@@ -31,7 +31,7 @@ class DecoderMultiHeadedAttention(nn.Module):
 
         attention = q @ k.transpose(2, 3)  # (B, N, T, T)
 
-        mask = torch.tril(torch.ones((T, T)))
+        mask = torch.tril(torch.ones((T, T))).to(x.device)
         attention = torch.masked_fill(attention, mask == 0, float('-inf'))
         attention /= (C ** 0.5)
 
